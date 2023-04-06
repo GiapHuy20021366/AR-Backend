@@ -13,6 +13,7 @@ const initWebRouters = (app) => {
     fileController.fileUpLoadAction
   );
   router.get("/view/:name", fileController.fileView);
+  router.get("/download/:name", fileController.fileDownload);
   return app.use("/", router);
 };
 
