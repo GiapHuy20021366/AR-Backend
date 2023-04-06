@@ -63,7 +63,7 @@ class World {
     const model = await loadDataModel(this.url);
 
     const modelScene = model.scene;
-    modelScene.position.set(0, 0, 0);
+    // modelScene.position.set(0, 0, 0);
 
     console.log(model);
     const animation = model.animations[0];
