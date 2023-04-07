@@ -63,9 +63,14 @@ class World {
     const model = await loadDataModel(this.url);
 
     const modelScene = model.scene;
+    const box = new THREE.Box3();
+    box.setFromObject(modelScene);
+    const size = new THREE.Vector3();
+    box.getSize(size);
+    console.log(size);
     // modelScene.position.set(0, 0, 0);
 
-    console.log(model);
+    // console.log(model);
     const animation = model.animations[0];
     const mixer = new THREE.AnimationMixer(modelScene);
     const action = mixer.clipAction(animation);
@@ -76,11 +81,10 @@ class World {
 
     const animate = () => {
       requestAnimationFrame(animate);
+
       const delta = clock.getDelta();
       controls.update();
-      //   console.log(mixer);
       mixer.update(delta);
-      console.log("asjkdk");
 
       renderer.render(scene, camera);
       renderer.setClearColor(scene.background);

@@ -23,10 +23,15 @@ conn.once("open", () => {
 export const storage = new GridFsStorage({
   url: process.env.MONGODB_URI,
   file: (req, file) => {
+    const filename = file.originalname.toLowerCase();
+    // This is a middleware, then pass file name into req
+    const middlewareInf = {
+      filename,
+    };
+    req.middlewareInf = middlewareInf;
     return new Promise((resolve, reject) => {
-      const filename = file.originalname;
       const fileInfo = {
-        filename: filename.toLowerCase(),
+        filename: filename,
         bucketName: process.env.COLLECTION,
       };
       resolve(fileInfo);

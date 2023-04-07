@@ -12,7 +12,11 @@ const fileUpLoadAction = (req, res, next) => {
     error.httpStatusCode = 400;
     return next(error);
   }
-  return res.send("File uploaded");
+  const { middlewareInf } = req;
+  const { filename } = middlewareInf;
+  return res.redirect(
+    `${process.env.SERVER_URL}:${process.env.PORT}/view/${filename}`
+  );
 };
 
 const fileView = async (req, res, next) => {
@@ -30,12 +34,14 @@ const fileView = async (req, res, next) => {
 
   const files = await gfs.find({ filename: name }).toArray();
   if (!files || files.length === 0) {
-    return res.status(403).send("Find not found");
+    return res.status(403).send("File not found");
   }
   const file = files[0];
 
   return res.render("model-view.ejs", {
-    modelUrl: `${process.env.SERVER_URL}:${process.env.PORT}/download/${file.filename}`,
+    modelUrl: `${process.env.SERVER_URL}:${
+      process.env.PORT
+    }/download/${file.filename.toLowerCase()}`,
   });
 };
 
