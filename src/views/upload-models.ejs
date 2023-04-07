@@ -3,13 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>node js upload image to mongodb</title>
+    <title>Upload GLB File</title>
 </head>
 <body>
-    <h1>Upload Image</h1>
+    <h1>Upload 3D model</h1>
     <form action="/upload" enctype="multipart/form-data" method="POST">
-        <input type="file" name="myModel" accept="*">
-        <input type="submit" value="Upload">
+        <div id="drop-zone">
+            <i class="fas fa-cloud-upload-alt">
+                <img src="https://cdn0.iconfinder.com/data/icons/file-format-3d-graphics-glyph-2/64/file_document_format_30-512.png" alt="iconGLB">
+            </i>
+            <span>Drag and drop your GLB file here or</span>
+            <input id="file" type="file" name="myModel" accept=".glb">
+            <label for="file">Choose file</label>
+            <p id="file-name"></p>
+        </div>
+        <button type="submit" name="submit">Upload</button>
     </form>
+    <script>
+        var dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', handleDragOver, false);
+        dropZone.addEventListener('drop', handleFileSelect, false);
+
+        function handleDragOver(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            evt.dataTransfer.dropEffect = 'copy';
+        }
+
+        function handleFileSelect(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+
+            var files = evt.dataTransfer.files; // FileList object.
+
+            // Only process one file.
+            var file = files[0];
+            var fileType = file.type;
+            console.log("file Type: "+ fileType +".");
+
+            if (!file.name.endsWith(".glb")) {
+                alert("Invalid file format. Please upload a GLB file.");
+                return;
+            }
+
+
+            // Update the input field with the selected file.
+            var inputFile = document.getElementById('file');
+            inputFile.files = files;
+
+            // Optional: Display the file name on the drop zone.
+            var dropZone = document.getElementById('drop-zone');
+            var fileName = document.createElement('p');
+            fileName.textContent = file.name;
+            var existingP = dropZone.querySelector('p');
+            if (existingP) {
+            dropZone.removeChild(existingP);
+            }
+            dropZone.appendChild(fileName);
+        }
+        var inputFile = document.getElementById('file');
+        inputFile.addEventListener('change', function() {
+            var fileName = this.value.split('\\').pop();
+            document.getElementById("file-name").innerHTML = fileName;
+        });
+        
+    </script>
 </body>
 </html>
+<!-- CSS -->
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 50px;
+    color: #ffffff;
+}
+form {
+    text-align: center;
+    margin-top: 30px;
+}
+#drop-zone {
+    border: 2px dashed #ccc;
+    padding: 25px;
+    margin: 50px auto;
+    max-width: 400px;
+    text-align: center;
+    background-color: #fff;
+}
+#drop-zone img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+}
+#drop-zone span {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+#drop-zone p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+}
+button[type="submit"] {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 15px;
+    font-size: 22px;
+    color: #fff;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: calc(16px + 1vw); 
+    padding: calc(8px + 1vw) calc(16px + 1vw);
+    border: 2px solid white; /* thêm viền trắng */
+    
+}
+button[type="submit"]:hover {
+    background-color: #0e0a3b;
+}
+input[type="file"] {
+display: none;
+}
+
+#drop-zone label {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 15px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#drop-zone label:hover {
+  background-color: #0e0a3b;
+}
+
+#upload-btn {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 15px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#upload-btn:hover {
+  background-color: #0e0a3b;
+}
+
+#drop-zone img {
+  display: block;
+  margin: 20px auto;
+  max-width: 50%;
+  height: auto;
+}
+
+#file-name {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+body {
+  background-image: url('https://vapa.vn/wp-content/uploads/2022/12/hinh-nen-den-3d-009.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+</style>
+
+
