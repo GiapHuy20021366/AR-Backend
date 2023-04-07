@@ -14,6 +14,7 @@ const initWebRouters = (app) => {
   );
   router.get("/view/:name", fileController.fileView);
   router.get("/download/:name", fileController.fileDownload);
+  router.get("/list", fileController.fileList);
   return app.use("/", router);
 };
 

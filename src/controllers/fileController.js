@@ -52,9 +52,10 @@ const fileDownload = async (req, res, next) => {
 };
 
 const fileList = async (req, res) => {
-  const files = await fileService.fileAllFilesOnDB(name);
+  const files = await fileService.fileAllFilesOnDB();
   return res.render("files-view.ejs", {
     files,
+    env: process.env,
   });
 };
 

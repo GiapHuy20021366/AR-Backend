@@ -18,6 +18,7 @@ conn.once("open", () => {
 export const storage = new GridFsStorage({
   url: process.env.MONGODB_URI,
   file: (req, file) => {
+    console.log(file);
     const filename = `${file.originalname.toLowerCase()}-${Date.now()}`;
     // This is a middleware, then pass file name into req
     const middlewareInf = {

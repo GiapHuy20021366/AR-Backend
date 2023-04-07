@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All file exist</title>
+    <script>
+        const oneFileExample = {
+            length: 15456676,
+            chunkSize: 261120,
+            uploadDate: {
+                date: "2023-04-06T07:32:52.155Z",
+            },
+            filename: "test3.glb",
+            contentType: "application/octet-stream",
+        };
+        const listFileExample = [];
+    </script>
+</head>
+
+<body>
+    <!-- ejs loop example -->
+    <ul>
+        <% files.forEach((file)=> { %>
+            <li>
+                <a href="<%=env.SERVER_URL%>:<%=env.PORT%>/view/<%=file.filename%>">
+                    <%=file.filename%>
+                </a>
+            </li>
+            <% }) %>
+    </ul>
+
+</body>
+
+</html>
