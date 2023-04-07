@@ -13,17 +13,12 @@ conn.once("open", () => {
   GFS.gfs = new mongoose.mongo.GridFSBucket(conn.db, {
     bucketName: process.env.COLLECTION,
   });
-  // GFS.gfs = Grid(conn.db, mongoose.mongo);
-  // GFS.gfs.collection(process.env.COLLECTION);
-  // gfs = Grid(conn.db, mongoose.mongo);
-  // gfs.collection(process.env.COLLECTION);
-  //   console.log("GFS ", gfs);
 });
 
 export const storage = new GridFsStorage({
   url: process.env.MONGODB_URI,
   file: (req, file) => {
-    const filename = file.originalname.toLowerCase();
+    const filename = `${file.originalname.toLowerCase()}-${Date.now()}`;
     // This is a middleware, then pass file name into req
     const middlewareInf = {
       filename,

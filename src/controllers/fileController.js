@@ -1,3 +1,4 @@
+import { fileService } from "../services/index";
 import GFS from "../config/storage";
 require("dotenv").config();
 
@@ -21,51 +22,40 @@ const fileUpLoadAction = (req, res, next) => {
 
 const fileView = async (req, res, next) => {
   const name = req?.params?.name;
-  // console.log(name);
-  const { gfs } = GFS;
 
-  if (!name) {
-    return res.status(403).send("Error - No file found");
+  try {
+    const file = await fileService.findFileOnDB(name.toLowerCase());
+    if (!file) {
+      return res.status(404).send("File not found");
+    }
+
+    return res.render("model-view.ejs", {
+      modelUrl: `${process.env.SERVER_URL}:${
+        process.env.PORT
+      }/download/${file.filename.toLowerCase()}`,
+    });
+  } catch (error) {
+    console.log(error);
   }
-
-  if (!gfs) {
-    return res.status(500).send("Internal Server failed");
-  }
-
-  const files = await gfs.find({ filename: name }).toArray();
-  if (!files || files.length === 0) {
-    return res.status(403).send("File not found");
-  }
-  const file = files[0];
-
-  return res.render("model-view.ejs", {
-    modelUrl: `${process.env.SERVER_URL}:${
-      process.env.PORT
-    }/download/${file.filename.toLowerCase()}`,
-  });
 };
 
 const fileDownload = async (req, res, next) => {
   const name = req?.params?.name;
-  console.log(name);
-  const { gfs } = GFS;
-
-  if (!name) {
-    return res.status(403).send("Error - No file found");
+  // console.log(name);
+  const file = await fileService.findFileOnDB(name);
+  if (!file) {
+    return res.status(404).send("File not found");
   }
-
-  if (!gfs) {
-    return res.status(500).send("Internal Server failed");
-  }
-
-  const files = await gfs.find({ filename: name }).toArray();
-  if (!files || files.length === 0) {
-    return res.status(403).send("Find not found");
-  }
-  const file = files[0];
   // console.log(file);
-  const downStream = gfs.openDownloadStream(file._id);
+  const downStream = GFS.gfs.openDownloadStream(file._id);
   return downStream.pipe(res);
+};
+
+const fileList = async (req, res) => {
+  const files = await fileService.fileAllFilesOnDB(name);
+  return res.render("files-view.ejs", {
+    files,
+  });
 };
 
 module.exports = {
@@ -73,4 +63,5 @@ module.exports = {
   fileUpLoadAction,
   fileView,
   fileDownload,
+  fileList,
 };
