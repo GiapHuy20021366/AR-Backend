@@ -14,7 +14,7 @@
             </i>
             <span>Drag and drop your GLB file here or</span>
             <input id="file" type="file" name="myModel" accept=".glb">
-            <label for="file">Chọn file</label>
+            <label for="file">Choose file</label>
             <p id="file-name"></p>
         </div>
         <button type="submit" name="submit">Upload</button>
@@ -38,6 +38,14 @@
 
             // Only process one file.
             var file = files[0];
+            var fileType = file.type;
+            console.log("file Type: "+ fileType +".");
+
+            if (!file.name.endsWith(".glb")) {
+                alert("Invalid file format. Please upload a GLB file.");
+                return;
+            }
+
 
             // Update the input field with the selected file.
             var inputFile = document.getElementById('file');
@@ -115,6 +123,10 @@ button[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: calc(16px + 1vw); 
+    padding: calc(8px + 1vw) calc(16px + 1vw);
+    border: 2px solid white; /* thêm viền trắng */
+    
 }
 button[type="submit"]:hover {
     background-color: #0e0a3b;
