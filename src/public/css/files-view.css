@@ -1,0 +1,20 @@
+iframe {
+    overflow: hidden;
+    border: 1px solid green;
+    border-radius: 15px;
+    flex: auto;
+}
+
+.model-name {
+    cursor: pointer;
+}
+
+.model-name:hover {
+    color: red;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    min-height: 70vh;
+}

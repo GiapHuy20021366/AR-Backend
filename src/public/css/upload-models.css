@@ -1,0 +1,123 @@
+body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 50px;
+        color: #ffffff;
+    }
+
+    form {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    #drop-zone {
+        border: 2px dashed #ccc;
+        padding: 25px;
+        margin: 50px auto;
+        max-width: 400px;
+        text-align: center;
+        background-color: #fff;
+    }
+
+    #drop-zone img {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+        height: auto;
+    }
+
+    #drop-zone span {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    #drop-zone p {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    button[type="submit"] {
+        display: block;
+        margin: 30px auto;
+        padding: 10px 15px;
+        font-size: 22px;
+        color: #fff;
+        background-color: #000000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: calc(16px + 1vw);
+        padding: calc(8px + 1vw) calc(16px + 1vw);
+        border: 2px solid white;
+        /* thêm viền trắng */
+
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0e0a3b;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    #drop-zone label {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 15px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #000000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #drop-zone label:hover {
+        background-color: #0e0a3b;
+    }
+
+    #upload-btn {
+        display: block;
+        margin: 30px auto;
+        padding: 10px 15px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #000000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #upload-btn:hover {
+        background-color: #0e0a3b;
+    }
+
+    #drop-zone img {
+        display: block;
+        margin: 20px auto;
+        max-width: 50%;
+        height: auto;
+    }
+
+    #file-name {
+        margin-top: 20px;
+        font-size: 20px;
+        color: #333;
+    }
+
+    body {
+        background-image: url('https://vapa.vn/wp-content/uploads/2022/12/hinh-nen-den-3d-009.jpg');
+        background-repeat: no-repeat;
+        background-size: auto;
+    }

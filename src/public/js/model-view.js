@@ -31,13 +31,13 @@ const axesHelper = new THREE.AxesHelper(50);
 scene.add(axesHelper);
 
 // Resize window event
-window.addEventListener("resize", () => {
-  const width = window.innerWidth;
-  const height = width.innerHeight;
-  renderer.setSize(width, height);
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix;
-});
+// window.addEventListener("resize", () => {
+//   const width = window.innerWidth;
+//   const height = width.innerHeight;
+//   renderer.setSize(width, height);
+//   camera.aspect = width / height;
+//   camera.updateProjectionMatrix;
+// });
 
 // setup controls
 const controls = new OrbitControls(camera, renderer.domElement);

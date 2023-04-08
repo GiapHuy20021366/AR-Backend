@@ -53,9 +53,18 @@ const fileDownload = async (req, res, next) => {
 
 const fileList = async (req, res) => {
   const files = await fileService.fileAllFilesOnDB();
+  files.forEach((file) => {
+    // Get origin name before Date index
+    const { filename } = file;
+    let idx = filename.lastIndexOf("-");
+    idx = idx != -1 ? idx : filename.length;
+    file.originalName = filename.slice(0, idx);
+    // Insert access view link
+    file.viewUrl = `${process.env.SERVER_URL}:${process.env.PORT}/view/${filename}`;
+    file.downloadUrl = `${process.env.SERVER_URL}:${process.env.PORT}/download/${filename}`;
+  });
   return res.render("files-view.ejs", {
     files,
-    env: process.env,
   });
 };
 
