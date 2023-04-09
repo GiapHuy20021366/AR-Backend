@@ -11,35 +11,57 @@
 </head>
 
 <body>
-    <!-- ejs loop -->
+    <div class="context-wrapper">
+        <div class="content">
+            <ul class="menu">
+                <li class="item">
+                    <span onclick=view()>View</span>
+                </li>
+                <li class="item">
+                    <span>Update</span>
+                </li>
+                <li class="item" onclick=deleteFile()>
+                    <span>Delete</span>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div id="container">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Upload Date</th>
-                <th>Length (bytes)</th>
-            </tr>
-            <% files.forEach((file)=> { %>
-                <tr>
-                    <td class="model-name">
-                        <a onclick=loadFrameToViewModel(event) viewUrl="<%=file.viewUrl%>"
-                            downloadUrl="<%=file.downloadUrl%>" fullName="<%=file.filename%>"
-                            originalName="<%=file.originalName%>" title="Click to view model">
-                            <%=file.originalName%>
-                        </a>
-                    </td>
-                    <td>
-                        <%=(new Date(file.uploadDate)).toLocaleString()%>
-                    </td>
-                    <td>
-                        <%=file.length%>
-                    </td>
-                </tr>
-                <% }) %>
+        <div id="files-container">
+            <table class="styled-table" id="table-files">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Upload Date</th>
+                        <th>Length (bytes)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% files.forEach((file)=> { %>
+                        <tr>
+                            <td class="model-name" onclick=loadFrameToViewModel(event) viewUrl="<%=file.viewUrl%>"
+                                downloadUrl="<%=file.downloadUrl%>" fullName="<%=file.filename%>"
+                                deleteUrl="<%=file.deleteUrl%>" originalName="<%=file.originalName%>"
+                                title="Click to view model" isModelName>
+                                <%=file.originalName%>
+                            </td>
+                            <td>
+                                <%=file.uploadDate%>
+                            </td>
+                            <td>
+                                <%=file.length%>
+                            </td>
+                        </tr>
+                        <% }) %>
 
-        </table>
-        <iframe id="view-frame" scrolling="no" src="/views/empty-view.html" frameborder="0"></iframe>
-
+                </tbody>
+            </table>
+        </div>
+        <div id="view-container">
+            <div id="add-new-model" onclick=redirectToAddModelPage()>Add new Model</div>
+            <iframe id="view-frame" src="/views/empty-view.html" frameborder="0">
+            </iframe>
+        </div>
     </div>
 </body>
 

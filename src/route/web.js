@@ -12,9 +12,10 @@ const initWebRouters = (app) => {
     upload.single("myModel"),
     fileController.fileUpLoadAction
   );
-  router.get("/view/:name", fileController.fileView);
-  router.get("/download/:name", fileController.fileDownload);
+  router.get("/view/model/:name", fileController.fileView);
+  router.get("/api/download/:name", fileController.fileDownload);
   router.get("/list", fileController.fileList);
+  router.delete("/api/model/:name", fileController.fileDelete);
   return app.use("/", router);
 };
 

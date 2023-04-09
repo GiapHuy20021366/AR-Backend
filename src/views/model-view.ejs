@@ -8,8 +8,20 @@
     <title>Model show</title>
     <script>
         const modelUrl = "<%=modelUrl%>";
+        const fileInfo = {
+            fullName: "<%=file.filename%>",
+            originalName: "<%=file.originalName%>",
+            downloadUrl: "<%=file.downloadUrl%>",
+            deleteUrl: "<%=file.deleteUrl%>",
+            viewUrl: "<%=file.viewUrl%>",
+            uploadDate: "<%=file.uploadDate%>",
+            length: "<%=file.length%>",
+            isModel: true,
+        }
+        if (window.parent) {
+            window.parent.postMessage(fileInfo, window.location.origin);
+        }
     </script>
-
 </head>
 
 <body>

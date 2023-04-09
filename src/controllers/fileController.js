@@ -9,14 +9,12 @@ const fileUploadView = (req, res) => {
 const fileUpLoadAction = (req, res, next) => {
   const { file, body } = req;
   if (!file) {
-    const error = new Error("Please upload a file");
-    error.httpStatusCode = 400;
-    return next(error);
+    return res.status(400).send("Please upload a file");
   }
   const { middlewareInf } = req;
   const { filename } = middlewareInf;
   return res.redirect(
-    `${process.env.SERVER_URL}:${process.env.PORT}/view/${filename}`
+    `${process.env.SERVER_URL}:${process.env.PORT}/view/model/${filename}`
   );
 };
 
@@ -28,11 +26,12 @@ const fileView = async (req, res, next) => {
     if (!file) {
       return res.status(404).send("File not found");
     }
-
+    fileService.insertFileInfo(file);
     return res.render("model-view.ejs", {
       modelUrl: `${process.env.SERVER_URL}:${
         process.env.PORT
-      }/download/${file.filename.toLowerCase()}`,
+      }/api/download/${file.filename.toLowerCase()}`,
+      file,
     });
   } catch (error) {
     console.log(error);
@@ -53,19 +52,24 @@ const fileDownload = async (req, res, next) => {
 
 const fileList = async (req, res) => {
   const files = await fileService.fileAllFilesOnDB();
+  if (!files) {
+    return res.status(500).send("Internal Server Error");
+  }
   files.forEach((file) => {
-    // Get origin name before Date index
-    const { filename } = file;
-    let idx = filename.lastIndexOf("-");
-    idx = idx != -1 ? idx : filename.length;
-    file.originalName = filename.slice(0, idx);
-    // Insert access view link
-    file.viewUrl = `${process.env.SERVER_URL}:${process.env.PORT}/view/${filename}`;
-    file.downloadUrl = `${process.env.SERVER_URL}:${process.env.PORT}/download/${filename}`;
+    fileService.insertFileInfo(file);
   });
   return res.render("files-view.ejs", {
-    files,
+    files: files.reverse(),
   });
+};
+
+const fileDelete = async (req, res) => {
+  const name = req?.params?.name;
+  if (!name) {
+    return res.status(403).send("Bad Request");
+  }
+  await fileService.deleteFile(name);
+  return res.status(200).send("Deleted!");
 };
 
 module.exports = {
@@ -74,4 +78,5 @@ module.exports = {
   fileView,
   fileDownload,
   fileList,
+  fileDelete,
 };

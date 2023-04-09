@@ -1,12 +1,15 @@
 iframe {
-    overflow: hidden;
+    overflow: scroll;
     border: 1px solid green;
     border-radius: 15px;
     flex: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .model-name {
     cursor: pointer;
+    width: 100%;
+    display: block;
 }
 
 .model-name:hover {
@@ -16,5 +19,116 @@ iframe {
 #container {
     display: flex;
     flex-direction: row;
-    min-height: 70vh;
+    flex-wrap: wrap;
+}
+
+#files-container {
+    max-height: 95vh;
+    overflow: auto;
+}
+
+#view-container {
+    flex: auto;
+    position: relative;
+    max-height: 97vh;
+    min-width: 50vw;
+}
+
+#add-new-model {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 5px;
+    background: green;
+    cursor: pointer;
+    z-index: 100;
+    padding: 5px;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+#add-new-model:hover {
+    background: red;
+}
+
+#view-frame {
+    position: absolute;
+    width: 100%;
+    height: 99vh;
+}
+
+/* Table format */
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+/* Context menu css*/
+
+.context-wrapper {
+    visibility: hidden;
+    position: absolute;
+    width: 200px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+.context-wrapper .menu {
+    padding: 3px 5px;
+    margin: 2px;
+}
+
+.content .item {
+    list-style: none;
+    font-size: 22px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0px 5px 0px 10px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.content .item:hover {
+    background: #f2f2f2;
+}
+
+.content .item span {
+    font-size: 16px;
+    margin-left: 8px;
 }

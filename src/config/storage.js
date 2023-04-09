@@ -3,7 +3,6 @@ import { GridFsStorage } from "multer-gridfs-storage";
 require("dotenv").config();
 import conn from "./connectDB";
 import mongoose from "mongoose";
-// const Grid = require("gridfs-stream");
 
 let gfs;
 const GFS = {
@@ -11,7 +10,7 @@ const GFS = {
 };
 conn.once("open", () => {
   GFS.gfs = new mongoose.mongo.GridFSBucket(conn.db, {
-    bucketName: process.env.COLLECTION,
+    bucketName: process.env.MODELS_COLLECTION,
   });
 });
 
@@ -29,7 +28,7 @@ export const storage = new GridFsStorage({
     return new Promise((resolve, reject) => {
       const fileInfo = {
         filename: filename,
-        bucketName: process.env.COLLECTION,
+        bucketName: process.env.MODELS_COLLECTION,
       };
       resolve(fileInfo);
     });
