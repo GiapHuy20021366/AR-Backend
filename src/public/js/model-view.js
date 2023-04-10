@@ -24,7 +24,7 @@ scene.add(hemiLight);
 
 // Add Light
 const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-dirLight.position.set(0, 0, 10);
+dirLight.position.set(1, 1, 1);
 scene.add(dirLight);
 
 const axesHelper = new THREE.AxesHelper(50);
