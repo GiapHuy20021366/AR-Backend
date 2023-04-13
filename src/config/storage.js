@@ -19,7 +19,7 @@ export const storage = new GridFsStorage({
   file: (req, file) => {
     console.log(file);
     const filename =
-      `${file.originalname.toLowerCase()}-${Date.now()}`.replaceAll(" ", "");
+      `${Date.now()}-${file.originalname.toLowerCase()}`.replaceAll(" ", "");
     // This is a middleware, then pass file name into req
     const middlewareInf = {
       filename,

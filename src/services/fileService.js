@@ -36,7 +36,7 @@ const insertFileInfo = (file) => {
   const { filename } = file;
   let idx = filename.lastIndexOf("-");
   idx = idx != -1 ? idx : filename.length;
-  file.originalName = filename.slice(0, idx);
+  file.originalName = filename.slice(idx + 1);
   // Insert access view link
   file.viewUrl = `${process.env.SERVER_URL}:${process.env.PORT}/view/model/${filename}`;
   file.downloadUrl = `${process.env.SERVER_URL}:${process.env.PORT}/api/download/${filename}`;
