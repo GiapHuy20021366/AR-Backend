@@ -11,17 +11,29 @@
 </head>
 
 <body>
+    <!-- The Modal -->
+    <div id="dropdown-rename-file" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick=hideRenameDropdown()>&times;</span>
+            <p>This feature is implementing. Please try later...</p>
+        </div>
+
+    </div>
     <div class="context-wrapper">
         <div class="content">
             <ul class="menu">
                 <li class="item">
                     <span onclick=view()>View</span>
                 </li>
-                <li class="item">
-                    <span>Update</span>
+                <li class="item" onclick=showRenameDropdown()>
+                    <span>Rename</span>
                 </li>
                 <li class="item" onclick=deleteFile()>
                     <span>Delete</span>
+                </li>
+                <li class="item" onclick=downloadFile()>
+                    <span>Download</span>
                 </li>
             </ul>
         </div>
@@ -58,9 +70,9 @@
             </table>
         </div>
         <div id="view-container">
-            <div id="add-new-model" onclick=redirectToAddModelPage()>Add new Model</div>
             <iframe id="view-frame" src="/views/empty-view.html" frameborder="0">
             </iframe>
+            <div id="add-new-model" onclick=redirectToAddModelPage()>Add new Model</div>
         </div>
     </div>
 </body>

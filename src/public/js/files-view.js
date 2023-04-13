@@ -66,6 +66,43 @@ const deleteFile = async () => {
   }
 };
 
+// Onclick download btn
+const downloadFile = async () => {
+  if (modelRef.current) {
+    const downloadUrl = modelRef.current.getAttribute("downloadUrl");
+    // await fetch(downloadUrl, {
+    //   method: "GET",
+    // });
+    window.open(downloadUrl);
+  } else {
+    print("No model found");
+  }
+};
+
+// On click rename btn
+const showRenameDropdown = () => {
+  const element = document.getElementById("dropdown-rename-file");
+  if (element) {
+    element.style.display = "block";
+  }
+};
+
+const hideRenameDropdown = () => {
+  const element = document.getElementById("dropdown-rename-file");
+  if (element) {
+    element.style.display = "none";
+  }
+};
+
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("dropdown-rename-file");
+  if (modal && event.target == modal) {
+    hideRenameDropdown();
+  }
+});
+
+//
+
 window.addEventListener("message", (event) => {
   if (event.origin == window.location.origin && event.data.isModel) {
     const { data } = event;
