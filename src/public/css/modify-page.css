@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#control-container {
+    position: fixed;
+    width: 20vw;
+    height: 100vh;
+    margin: 0;
+    top: 0;
+    right: 0;
+    background-color: black;
+    color: white;
+    overflow-y: auto;
+}
+
+#lights-container {
+    border: 1px solid red;
+}
+
+#lights {
+    overflow-y: auto;
+}
+
+#canvas-container {
+    width: 80vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}

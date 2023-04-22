@@ -1,5 +1,9 @@
 import express from "express";
-import { homeController, fileController } from "./../controllers/index";
+import {
+  homeController,
+  fileController,
+  modifyController,
+} from "./../controllers/index";
 import { upload } from "../config/storage";
 
 const router = express.Router();
@@ -16,6 +20,7 @@ const initWebRouters = (app) => {
   router.get("/api/download/:name", fileController.fileDownload);
   router.get("/list", fileController.fileList);
   router.delete("/api/model/:name", fileController.fileDelete);
+  router.get("/page", modifyController.modifyPage);
   return app.use("/", router);
 };
 

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/modify-page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>CDCN</title>
+</head>
+
+<body>
+    <div id="canvas-container"></div>
+    <div id="control-container">
+        <div class="row mx-0" id="options-container">
+            <a class="btn btn-primary" data-toggle="collapse" href="#options" role="button" aria-expanded="false"
+                aria-controls="options">
+                Options
+            </a>
+            <div class="container-fluid" class="collapse" id="options">
+                <div class="_background">
+                    <div class="_background-header">Background</div>
+                    <input type="color" class="_background-value">
+                </div>
+            </div>
+        </div>
+        <div class="row mx-0" id="lights-container">
+            <a class="btn btn-primary" data-toggle="collapse" href="#lights" role="button" aria-expanded="false"
+                aria-controls="lights">
+                Lights
+            </a>
+            <div class="container-fluid" class="collapse" id="lights">
+            </div>
+        </div>
+        <div class="row mx-0" id="models-container">
+            <a class="btn btn-primary" data-toggle="collapse" href="#models" role="button" aria-expanded="false"
+                aria-controls="models">
+                Models
+            </a>
+            <div class="container-fluid" class="collapse" id="models">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="Form-Node" style="display: none;">
+        <!-- Light prototype -->
+        <div class="_light">
+            <div class="_light-header">
+                Light
+            </div>
+            <div class="_light-properties">
+                <div class="_light-position">
+                    <div class="_lights-positions-header">Position</div>
+                    <div class="_lights-position-values">
+                        <div class="_light-postion-x">
+                            <div class="_light-position-x-header">
+                                X:
+                            </div>
+                            <input type="number" value="0" class="_light-position-x-value">
+                        </div>
+                        <div class="_light-postion-y">
+                            <div class="_light-position-y-header">
+                                Y:
+                            </div>
+                            <input type="number" value="0" class="_light-position-y-value">
+                        </div>
+                        <div class="_light-postion-z">
+                            <div class="_light-position-z-header">
+                                Z:
+                            </div>
+                            <input type="number" value="0" class="_light-position-z-value">
+                        </div>
+                    </div>
+                </div>
+                <div class="_light-visible">
+                    <input type="checkbox" class="_light-visible-value">
+                    <div class="_light-visible-header">Visible</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Model prototype -->
+        <div class="_model">
+            <div class="_model-header">
+                Model
+            </div>
+            <div class="_model-properties">
+                <div class="_model-group">
+                    <div class="_model-group-header">
+                        Group
+                    </div>
+                    <select class="_model-group-values">
+                        <option selected value class="_model-group-values-blank">No group</option>
+                    </select>
+                </div>
+                <div class="_model-position">
+                    <div class="_models-positions-header">Position</div>
+                    <div class="_models-position-values">
+                        <div class="_model-postion-x">
+                            <div class="_model-position-x-header">
+                                X:
+                            </div>
+                            <input type="number" value="0" class="_model-position-x-value">
+                        </div>
+                        <div class="_model-postion-y">
+                            <div class="_model-position-y-header">
+                                Y:
+                            </div>
+                            <input type="number" value="0" class="_model-position-y-value">
+                        </div>
+                        <div class="_model-postion-z">
+                            <div class="_model-position-z-header">
+                                Z:
+                            </div>
+                            <input type="number" value="0" class="_model-position-z-value">
+                        </div>
+                    </div>
+                </div>
+                <div class="_model-rotation">
+                    <div class="_models-rotations-header">Rotation</div>
+                    <div class="_models-rotation-values">
+                        <div class="_model-postion-x">
+                            <div class="_model-rotation-x-header">
+                                X:
+                            </div>
+                            <input type="number" value="0" class="_model-rotation-x-value">
+                        </div>
+                        <div class="_model-postion-y">
+                            <div class="_model-rotation-y-header">
+                                Y:
+                            </div>
+                            <input type="number" value="0" class="_model-rotation-y-value">
+                        </div>
+                        <div class="_model-postion-z">
+                            <div class="_model-rotation-z-header">
+                                Z:
+                            </div>
+                            <input type="number" value="0" class="_model-rotation-z-value">
+                        </div>
+                    </div>
+                </div>
+                <div class="_model-scale">
+                    <div class="_models-scales-header">Scale</div>
+                    <div class="_models-scale-values">
+                        <div class="_model-postion-x">
+                            <div class="_model-scale-x-header">
+                                X:
+                            </div>
+                            <input type="number" value="0" class="_model-scale-x-value">
+                        </div>
+                        <div class="_model-postion-y">
+                            <div class="_model-scale-y-header">
+                                Y:
+                            </div>
+                            <input type="number" value="0" class="_model-scale-y-value">
+                        </div>
+                        <div class="_model-postion-z">
+                            <div class="_model-scale-z-header">
+                                Z:
+                            </div>
+                            <input type="number" value="0" class="_model-scale-z-value">
+                        </div>
+                    </div>
+                </div>
+                <div class="_model-visible">
+                    <input type="checkbox" class="_model-visible-value">
+                    <div class="_model-visible-header">Visible</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="/js/embed-component.js" type="module"></script>
+    <script src="/js/modify-page.js" type="module"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

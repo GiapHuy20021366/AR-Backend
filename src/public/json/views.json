@@ -1,0 +1,96 @@
+{
+    "version": 1,
+    "marker": {
+        "position": [
+            0,
+            1.8,
+            0
+        ],
+        "rotation": [
+            0,
+            0,
+            0
+        ],
+        "scale": [
+            1,
+            1,
+            1
+        ]
+    },
+    "models": [
+        {
+            "id": "table-example1",
+            "name": "1682086399439-table",
+            "group": null,
+            "position": [
+                -2,
+                0,
+                4
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "visible": true
+        },
+        {
+            "id": "table-example2",
+            "name": "1682086399439-table",
+            "group": "group1",
+            "position": [
+                0,
+                0,
+                4
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "visible": true
+        },
+        {
+            "id": "table-example3",
+            "name": "1682086399439-table",
+            "group": "group1",
+            "position": [
+                -2,
+                0,
+                0
+            ],
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "visible": true
+        }
+    ],
+    "groups": [
+        "group1",
+        "group2",
+        "group3"
+    ],
+    "files": {
+        "1682086399439-table": {
+            "name": "1682086399439-table",
+            "downloadUrl": "http://localhost:16000/api/download/1682086399439-table.glb"
+        }
+    }
+}
