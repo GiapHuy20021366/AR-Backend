@@ -92,7 +92,8 @@ export const syncModels = (world) => {
   // Reject models not in world
   Object.keys(worldRefs.models).forEach((modelKey) => {
     if (!keys.includes(modelKey)) {
-      document.getElementById(`model-${modelKey}`).remove();
+      const modelContainer = document.getElementById(`model-${modelKey}`);
+      modelContainer && modelContainer.remove();
       delete worldRefs.models[modelKey];
     }
   });
@@ -275,7 +276,8 @@ export const syncModels = (world) => {
               // console.log(option);
               option && option.remove();
             });
-            console.log("Model Deleted");
+            syncModels(world);
+            // console.log("Model Deleted");
           }
         });
     }
@@ -511,8 +513,11 @@ export const syncImport = async (world) => {
 
       // console.log(name, downloadUrl, key);
       const model = await world.downloader.download(downloadUrl, name);
+      // console.log(Object.keys(worldRefs.models));
       world.addModel(model, id, name);
-      console.log();
+      // console.log("New model Added");
+      // console.log(id);
+      // console.log(Object.keys(world.models));
     });
 
   document

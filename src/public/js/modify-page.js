@@ -1,7 +1,6 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
-// import SkeletonUtils from "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/jsm/utils/SkeletonUtils.js";
 
 import {
   syncLights,
@@ -94,12 +93,10 @@ const cloneGltf = (gltf) => {
 
 const getBoxHelper = (modelScene) => {
   const group = new THREE.Group();
-  // Tạo hộp bao quanh đối tượng
   const box = new THREE.Box3().setFromObject(modelScene);
   const boxHelper = new THREE.BoxHelper(modelScene, 0xffff00);
   group.add(boxHelper);
 
-  // Tạo 8 dấu tại các điểm đầu mút của hộp
   const cornerSpheres = [];
   const cornerPositions = [
     box.min.clone(),
@@ -445,7 +442,6 @@ class World {
   ) {
     // const model = await loader(url);
     // const modelScene = model.scene.clone();
-    // const modelScene = THREE.SkeletonUtils.clone(model.scene);
     const modelScene = model.scene;
     const animation = model.animations[0];
     const mixer = new THREE.AnimationMixer(modelScene);
