@@ -21,6 +21,8 @@ const initWebRouters = (app) => {
   router.get("/list", fileController.fileList);
   router.delete("/api/model/:name", fileController.fileDelete);
   router.get("/page", modifyController.modifyPage);
+  router.get("/files", fileController.getAllFiles);
+  router.post("/json", fileController.saveViews);
   return app.use("/", router);
 };
 

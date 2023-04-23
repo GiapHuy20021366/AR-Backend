@@ -1,5 +1,7 @@
 import { fileService } from "../services/index";
 import GFS from "../config/storage";
+import fs from "fs";
+import path from "path";
 require("dotenv").config();
 
 const fileUploadView = (req, res) => {
@@ -72,6 +74,41 @@ const fileDelete = async (req, res) => {
   return res.status(200).send("Deleted!");
 };
 
+const getAllFiles = async (req, res) => {
+  const files = await fileService.fileAllFilesOnDB();
+  if (!files) {
+    return res.status(500).send("Internal Server Error");
+  }
+  files.forEach((file) => {
+    fileService.insertFileInfo(file);
+  });
+  return res.status(200).json(files);
+};
+
+const saveViews = async (req, res) => {
+  const obj = req.body;
+  console.log("obj \n", obj);
+  try {
+    fs.writeFile(
+      path.resolve(__dirname, "../public/json/views.json"),
+      JSON.stringify(obj),
+      (err) => {
+        console.log(err);
+      }
+    );
+    return res.status(200).json({
+      message: "Success!",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+};
+
+const getViews = async (req, res) => {};
+
 module.exports = {
   fileUploadView,
   fileUpLoadAction,
@@ -79,4 +116,6 @@ module.exports = {
   fileDownload,
   fileList,
   fileDelete,
+  getAllFiles,
+  saveViews,
 };
