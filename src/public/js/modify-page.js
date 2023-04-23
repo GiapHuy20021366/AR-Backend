@@ -1,6 +1,8 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
+// import SkeletonUtils from "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/jsm/utils/SkeletonUtils.js";
+
 import {
   syncLights,
   syncModels,
@@ -40,6 +42,54 @@ const gltfLoader = async (url) => {
   const loader = new GLTFLoader();
   const model = await loader.loadAsync(url);
   return model;
+};
+
+const cloneGltf = (gltf) => {
+  const clone = {
+    animations: gltf.animations,
+    scene: gltf.scene.clone(true),
+  };
+
+  const skinnedMeshes = {};
+
+  gltf.scene.traverse((node) => {
+    if (node.isSkinnedMesh) {
+      skinnedMeshes[node.name] = node;
+    }
+  });
+
+  const cloneBones = {};
+  const cloneSkinnedMeshes = {};
+
+  clone.scene.traverse((node) => {
+    if (node.isBone) {
+      cloneBones[node.name] = node;
+    }
+
+    if (node.isSkinnedMesh) {
+      cloneSkinnedMeshes[node.name] = node;
+    }
+  });
+
+  for (let name in skinnedMeshes) {
+    const skinnedMesh = skinnedMeshes[name];
+    const skeleton = skinnedMesh.skeleton;
+    const cloneSkinnedMesh = cloneSkinnedMeshes[name];
+
+    const orderedCloneBones = [];
+
+    for (let i = 0; i < skeleton.bones.length; ++i) {
+      const cloneBone = cloneBones[skeleton.bones[i].name];
+      orderedCloneBones.push(cloneBone);
+    }
+
+    cloneSkinnedMesh.bind(
+      new THREE.Skeleton(orderedCloneBones, skeleton.boneInverses),
+      cloneSkinnedMesh.matrixWorld
+    );
+  }
+
+  return clone;
 };
 
 const getBoxHelper = (modelScene) => {
@@ -94,12 +144,13 @@ class DownloadManager {
 
   async download(url, name, loader = gltfLoader) {
     if (this.downloaded[name]) {
-      return this.downloaded[name];
+      const clone = cloneGltf(this.downloaded[name]);
+      return clone;
     }
     const model = await loader(url);
-    this.download[name] = model;
+    this.downloaded[name] = model;
     this.urls[name] = url;
-    return model;
+    return cloneGltf(model);
   }
 }
 
@@ -393,7 +444,9 @@ class World {
     groupName = null
   ) {
     // const model = await loader(url);
-    const modelScene = model.scene.clone();
+    // const modelScene = model.scene.clone();
+    // const modelScene = THREE.SkeletonUtils.clone(model.scene);
+    const modelScene = model.scene;
     const animation = model.animations[0];
     const mixer = new THREE.AnimationMixer(modelScene);
     const action = mixer.clipAction(animation);
