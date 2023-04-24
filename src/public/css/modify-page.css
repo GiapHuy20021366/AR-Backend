@@ -3,6 +3,55 @@ body {
     overflow: hidden;
 }
 
+.btn-primary {
+    width: 100%;
+    background-color: #009879;
+    border-color: #009879;
+}
+
+.container-fluid,
+._model-properties,
+._group-properties {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.section-header {
+    text-align: left;
+    padding-left: 0.75em;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.input-header {
+    font-size: 1.2em;
+    padding-left: 0.75em;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-box input,
+.input-box select,
+.input-box button {
+    text-align: center;
+    border-radius: 0.375em;
+    margin-bottom: 0.5em;
+}
+
+.input-box input,
+.input-box select {
+    width: 60%;
+}
+
+.input-box button {
+    width: 30%;
+}
+
 #control-container {
     position: fixed;
     width: 20vw;
@@ -10,16 +59,8 @@ body {
     margin: 0;
     top: 0;
     right: 0;
-    background-color: black;
+    background-color: #202104;
     color: white;
-    overflow-y: auto;
-}
-
-#lights-container {
-    border: 1px solid red;
-}
-
-#lights {
     overflow-y: auto;
 }
 

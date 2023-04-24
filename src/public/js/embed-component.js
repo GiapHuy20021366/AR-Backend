@@ -114,6 +114,10 @@ export const syncModels = (world) => {
 
       const modelHeader = modelContainer.querySelector("._model-header");
       modelHeader.innerHTML = key;
+      modelHeader.href = `#${key}-model-collapsible`
+
+      const modelProperties = modelContainer.querySelector("._model-properties");
+      modelProperties.id = `${key}-model-collapsible`
 
       // sync groups
       const groups = world.groups;
@@ -313,6 +317,10 @@ export const syncGroups = (world) => {
 
       const groupHeader = groupContainer.querySelector("._group-header");
       groupHeader.innerHTML = key;
+      groupHeader.href = `#${key}-group-collapsible`
+
+      const groupProperties = groupContainer.querySelector("._group-properties");
+      groupProperties.id = `${key}-group-collapsible`
 
       // List element Sync
       const elements = groupContainer.querySelector("._group-model-values");

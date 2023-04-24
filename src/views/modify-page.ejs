@@ -20,13 +20,12 @@
                 aria-controls="import">
                 Import/Export
             </a>
-            <div class="container-fluid" class="collapse" id="import">
-                <button id="btn-refresh-import">Refresh</button>
+            <div class="container-fluid collapse show" class="collapse" id="import">
                 <div id="import-model">
-                    <div id="import-model-header">
+                    <div class="input-header" id="import-model-header">
                         Model
                     </div>
-                    <div class="import-model-container">
+                    <div class="import-model-container input-box">
                         <select id="import-model-options">
                         </select>
                         <button id="import-model-action">
@@ -35,10 +34,10 @@
                     </div>
                 </div>
                 <div id="import-group">
-                    <div id="import-group-header">
+                    <div class="input-header" id="import-group-header">
                         Group
                     </div>
-                    <div class="import-group-container">
+                    <div class="import-group-container input-box">
                         <input id="import-group-input" type="text">
                         <button id="import-group-action">
                             Import
@@ -46,16 +45,17 @@
                     </div>
                 </div>
                 <div id="export-result">
-                    <div id="export-result-header">
+                    <div class="input-header" id="export-result-header">
                         Export
                     </div>
-                    <div class="export-result-container">
+                    <div class="export-result-container input-box">
                         <input id="export-result-input" type="text">
                         <button id="export-result-action">
                             Export
                         </button>
                     </div>
                 </div>
+                <button id="btn-refresh-import">Refresh</button>
                 <button id="save-to-server">Save</button>
             </div>
         </div>
@@ -64,9 +64,9 @@
                 aria-controls="options">
                 Options
             </a>
-            <div class="container-fluid" class="collapse" id="options">
-                <div class="_background">
-                    <div class="_background-header">Background</div>
+            <div class="container-fluid collapse show" id="options">
+                <div class="_background input-box">
+                    <label class="_background-header">Background</label>
                     <input type="color" class="_background-value">
                 </div>
             </div>
@@ -76,7 +76,7 @@
                 aria-controls="lights">
                 Lights
             </a>
-            <div class="container-fluid" class="collapse" id="lights">
+            <div class="container-fluid collapse show" id="lights">
             </div>
         </div>
         <div class="row mx-0" id="models-container">
@@ -84,80 +84,80 @@
                 aria-controls="anchor">
                 Anchor
             </a>
-            <div class="container-fluid" class="collapse" id="anchor">
+            <div class="container-fluid collapse show" class="collapse" id="anchor">
                 <div class="anchor-properties">
                     <div class="anchor-position">
-                        <div class="anchors-positions-header">Position</div>
+                        <div class="anchors-positions-header input-header">Position</div>
                         <div class="anchors-position-values">
-                            <div class="anchor-postion-x">
-                                <div class="anchor-position-x-header">
+                            <div class="anchor-postion-x input-box">
+                                <label class="anchor-position-x-header">
                                     X:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-position-x-value">
                             </div>
-                            <div class="anchor-postion-y">
-                                <div class="anchor-position-y-header">
+                            <div class="anchor-postion-y input-box">
+                                <label class="anchor-position-y-header">
                                     Y:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-position-y-value">
                             </div>
-                            <div class="anchor-postion-z">
-                                <div class="anchor-position-z-header">
+                            <div class="anchor-postion-z input-box">
+                                <label class="anchor-position-z-header">
                                     Z:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-position-z-value">
                             </div>
                         </div>
                     </div>
                     <div class="anchor-rotation">
-                        <div class="anchors-rotations-header">Rotation</div>
+                        <div class="anchors-rotations-header input-header">Rotation</div>
                         <div class="anchors-rotation-values">
-                            <div class="anchor-postion-x">
-                                <div class="anchor-rotation-x-header">
+                            <div class="anchor-postion-x input-box">
+                                <label class="anchor-rotation-x-header">
                                     X:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-rotation-x-value">
                             </div>
-                            <div class="anchor-postion-y">
-                                <div class="anchor-rotation-y-header">
+                            <div class="anchor-postion-y input-box">
+                                <label class="anchor-rotation-y-header">
                                     Y:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-rotation-y-value">
                             </div>
-                            <div class="anchor-postion-z">
-                                <div class="anchor-rotation-z-header">
+                            <div class="anchor-postion-z input-box">
+                                <label class="anchor-rotation-z-header">
                                     Z:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-rotation-z-value">
                             </div>
                         </div>
                     </div>
                     <div class="anchor-scale">
-                        <div class="anchors-scales-header">Scale</div>
+                        <div class="anchors-scales-header input-header">Scale</div>
                         <div class="anchors-scale-values">
-                            <div class="anchor-postion-x">
-                                <div class="anchor-scale-x-header">
+                            <div class="anchor-postion-x input-box">
+                                <label class="anchor-scale-x-header">
                                     X:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-scale-x-value">
                             </div>
-                            <div class="anchor-postion-y">
-                                <div class="anchor-scale-y-header">
+                            <div class="anchor-postion-y input-box">
+                                <label class="anchor-scale-y-header">
                                     Y:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-scale-y-value">
                             </div>
-                            <div class="anchor-postion-z">
-                                <div class="anchor-scale-z-header">
+                            <div class="anchor-postion-z input-box">
+                                <label class="anchor-scale-z-header">
                                     Z:
-                                </div>
+                                </label>
                                 <input type="number" value="0" class="anchor-scale-z-value">
                             </div>
                         </div>
                     </div>
-                    <div class="anchor-visible">
+                    <div class="anchor-visible input-box">
+                        <label class="anchor-visible-header">Visible</label>
                         <input type="checkbox" class="anchor-visible-value">
-                        <div class="anchor-visible-header">Visible</div>
                     </div>
                 </div>
             </div>
@@ -167,7 +167,7 @@
                 aria-controls="models">
                 Models
             </a>
-            <div class="container-fluid" class="collapse" id="models">
+            <div class="container-fluid collapse show" id="models">
 
             </div>
         </div>
@@ -176,7 +176,7 @@
                 aria-controls="groups">
                 Groups
             </a>
-            <div class="container-fluid" class="collapse" id="groups">
+            <div class="container-fluid collapse show" class="collapse" id="groups">
 
             </div>
         </div>
@@ -185,47 +185,48 @@
     <div id="Form-Node" style="display: none;">
         <!-- Light prototype -->
         <div class="_light">
-            <div class="_light-header">
+            <div class="_light-header section-header">
                 Light
             </div>
             <div class="_light-properties">
                 <div class="_light-position">
-                    <div class="_lights-positions-header">Position</div>
+                    <div class="_lights-positions-header input-header">Position</div>
                     <div class="_lights-position-values">
-                        <div class="_light-postion-x">
-                            <div class="_light-position-x-header">
+                        <div class="_light-postion-x input-box">
+                            <label class="_light-position-x-header">
                                 X:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_light-position-x-value">
                         </div>
-                        <div class="_light-postion-y">
-                            <div class="_light-position-y-header">
+                        <div class="_light-postion-y input-box">
+                            <label class="_light-position-y-header">
                                 Y:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_light-position-y-value">
                         </div>
-                        <div class="_light-postion-z">
-                            <div class="_light-position-z-header">
+                        <div class="_light-postion-z input-box">
+                            <label class="_light-position-z-header">
                                 Z:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_light-position-z-value">
                         </div>
                     </div>
                 </div>
-                <div class="_light-visible">
+                <div class="_light-visible input-box">
+                    <label class="_light-visible-header">Visible</label>
                     <input type="checkbox" class="_light-visible-value">
-                    <div class="_light-visible-header">Visible</div>
                 </div>
             </div>
         </div>
 
         <!-- Model prototype -->
         <div class="_model">
-            <div class="_model-header">
+            <a class="_model-header btn btn-primary" data-toggle="collapse" role="button" aria-expanded="false"
+                aria-controls="options">
                 Model
-            </div>
-            <div class="_model-properties">
-                <div class="_model-group">
+            </a>
+            <div class="_model-properties collapse show">
+                <div class="_model-group input-box">
                     <div class="_model-group-header">
                         Group
                     </div>
@@ -234,83 +235,83 @@
                     </select>
                 </div>
                 <div class="_model-position">
-                    <div class="_models-positions-header">Position</div>
+                    <div class="_models-positions-header input-header">Position</div>
                     <div class="_models-position-values">
-                        <div class="_model-postion-x">
-                            <div class="_model-position-x-header">
+                        <div class="_model-postion-x input-box">
+                            <label class="_model-position-x-header">
                                 X:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-position-x-value">
                         </div>
-                        <div class="_model-postion-y">
-                            <div class="_model-position-y-header">
+                        <div class="_model-postion-y input-box">
+                            <label class="_model-position-y-header">
                                 Y:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-position-y-value">
                         </div>
-                        <div class="_model-postion-z">
-                            <div class="_model-position-z-header">
+                        <div class="_model-postion-z input-box">
+                            <label class="_model-position-z-header">
                                 Z:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-position-z-value">
                         </div>
                     </div>
                 </div>
                 <div class="_model-rotation">
-                    <div class="_models-rotations-header">Rotation</div>
+                    <div class="_models-rotations-header input-header">Rotation</div>
                     <div class="_models-rotation-values">
-                        <div class="_model-postion-x">
-                            <div class="_model-rotation-x-header">
+                        <div class="_model-postion-x input-box">
+                            <label class="_model-rotation-x-header">
                                 X:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-rotation-x-value">
                         </div>
-                        <div class="_model-postion-y">
-                            <div class="_model-rotation-y-header">
+                        <div class="_model-postion-y input-box">
+                            <label class="_model-rotation-y-header">
                                 Y:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-rotation-y-value">
                         </div>
-                        <div class="_model-postion-z">
-                            <div class="_model-rotation-z-header">
+                        <div class="_model-postion-z input-box">
+                            <label class="_model-rotation-z-header">
                                 Z:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-rotation-z-value">
                         </div>
                     </div>
                 </div>
                 <div class="_model-scale">
-                    <div class="_models-scales-header">Scale</div>
+                    <div class="_models-scales-header input-header">Scale</div>
                     <div class="_models-scale-values">
-                        <div class="_model-postion-x">
-                            <div class="_model-scale-x-header">
+                        <div class="_model-postion-x input-box">
+                            <label class="_model-scale-x-header">
                                 X:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-scale-x-value">
                         </div>
-                        <div class="_model-postion-y">
-                            <div class="_model-scale-y-header">
+                        <div class="_model-postion-y input-box">
+                            <label class="_model-scale-y-header">
                                 Y:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-scale-y-value">
                         </div>
-                        <div class="_model-postion-z">
-                            <div class="_model-scale-z-header">
+                        <div class="_model-postion-z input-box">
+                            <label class="_model-scale-z-header">
                                 Z:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_model-scale-z-value">
                         </div>
                     </div>
                 </div>
-                <div class="_model-visible">
+                <div class="_model-visible input-box">
+                    <label class="_model-visible-header">Visible</label>
                     <input type="checkbox" class="_model-visible-value">
-                    <div class="_model-visible-header">Visible</div>
                 </div>
                 <div class="_model-box-helper">
-                    <input type="checkbox" class="_model-box-helper-value">
-                    <div class="_model-box-helper-header">
+                    <label class="_model-box-helper-header">
                         Box Helper
-                    </div>
+                    </label>
+                    <input type="checkbox" class="_model-box-helper-value">
                 </div>
             </div>
             <button class="_model-delete">
@@ -319,11 +320,12 @@
         </div>
 
         <div class="_group">
-            <div class="_group-header">
+            <a class="_group-header btn btn-primary" data-toggle="collapse" role="button" aria-expanded="false"
+                aria-controls="options">
                 Group
-            </div>
-            <div class="_group-properties">
-                <div class="_group-models">
+            </a>
+            <div class="_group-properties collapse show">
+                <div class="_group-models input-box">
                     <div class="_group-model-header">
                         Elements
                     </div>
@@ -332,83 +334,83 @@
                     </select>
                 </div>
                 <div class="_group-position">
-                    <div class="_groups-positions-header">Position</div>
+                    <div class="_groups-positions-header input-header">Position</div>
                     <div class="_groups-position-values">
-                        <div class="_group-postion-x">
-                            <div class="_group-position-x-header">
+                        <div class="_group-postion-x input-box">
+                            <label class="_group-position-x-header">
                                 X:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-position-x-value">
                         </div>
-                        <div class="_group-postion-y">
-                            <div class="_group-position-y-header">
+                        <div class="_group-postion-y input-box">
+                            <label class="_group-position-y-header">
                                 Y:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-position-y-value">
                         </div>
-                        <div class="_group-postion-z">
-                            <div class="_group-position-z-header">
+                        <div class="_group-postion-z input-box">
+                            <label class="_group-position-z-header">
                                 Z:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-position-z-value">
                         </div>
                     </div>
                 </div>
                 <div class="_group-rotation">
-                    <div class="_groups-rotations-header">Rotation</div>
+                    <div class="_groups-rotations-header input-header">Rotation</div>
                     <div class="_groups-rotation-values">
-                        <div class="_group-postion-x">
-                            <div class="_group-rotation-x-header">
+                        <div class="_group-postion-x input-box">
+                            <label class="_group-rotation-x-header">
                                 X:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-rotation-x-value">
                         </div>
-                        <div class="_group-postion-y">
-                            <div class="_group-rotation-y-header">
+                        <div class="_group-postion-y input-box">
+                            <label class="_group-rotation-y-header">
                                 Y:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-rotation-y-value">
                         </div>
-                        <div class="_group-postion-z">
-                            <div class="_group-rotation-z-header">
+                        <div class="_group-postion-z input-box">
+                            <label class="_group-rotation-z-header">
                                 Z:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-rotation-z-value">
                         </div>
                     </div>
                 </div>
                 <div class="_group-scale">
-                    <div class="_groups-scales-header">Scale</div>
+                    <div class="_groups-scales-header input-header">Scale</div>
                     <div class="_groups-scale-values">
-                        <div class="_group-postion-x">
-                            <div class="_group-scale-x-header">
+                        <div class="_group-postion-x input-box">
+                            <label class="_group-scale-x-header">
                                 X:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-scale-x-value">
                         </div>
-                        <div class="_group-postion-y">
-                            <div class="_group-scale-y-header">
+                        <div class="_group-postion-y input-box">
+                            <label class="_group-scale-y-header">
                                 Y:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-scale-y-value">
                         </div>
-                        <div class="_group-postion-z">
-                            <div class="_group-scale-z-header">
+                        <div class="_group-postion-z input-box">
+                            <label class="_group-scale-z-header">
                                 Z:
-                            </div>
+                            </label>
                             <input type="number" value="0" class="_group-scale-z-value">
                         </div>
                     </div>
                 </div>
-                <div class="_group-visible">
+                <div class="_group-visible input-box">
+                    <label class="_group-visible-header">Visible</label>
                     <input type="checkbox" class="_group-visible-value">
-                    <div class="_group-visible-header">Visible</div>
                 </div>
-                <div class="_group-box-helper">
-                    <input type="checkbox" class="_group-box-helper-value">
-                    <div class="_group-box-helper-header">
+                <div class="_group-box-helper input-box">
+                    <label class="_group-box-helper-header">
                         Box Helper
-                    </div>
+                    </label>
+                    <input type="checkbox" class="_group-box-helper-value">
                 </div>
             </div>
         </div>
