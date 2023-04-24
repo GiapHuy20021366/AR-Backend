@@ -48,6 +48,10 @@ export const syncLights = (world) => {
 
       const lightHeader = lightContainer.querySelector("._light-header");
       lightHeader.innerHTML = key;
+      lightHeader.href = `#${key}-light-collapsible`;
+
+      const lightProperties = lightContainer.querySelector("._light-properties");
+      lightProperties.id = `${key}-light-collapsible`;
 
       // Position sync
       const positionX = lightContainer.querySelector(
@@ -506,12 +510,14 @@ export const syncImport = async (world) => {
   };
   document
     .getElementById("btn-refresh-import")
-    .addEventListener("click", () => {
+    .addEventListener("click", (event) => {
+      event.preventDefault()
       reload();
     });
   document
     .getElementById("import-model-action")
     .addEventListener("click", async (event) => {
+      event.preventDefault()
       const options = document.getElementById("import-model-options");
       const selected = options.options[options.selectedIndex];
       const prefix = selected.getAttribute("originalName");
@@ -530,7 +536,8 @@ export const syncImport = async (world) => {
 
   document
     .getElementById("import-group-action")
-    .addEventListener("click", () => {
+    .addEventListener("click", (event) => {
+      event.preventDefault()
       const input = document.getElementById("import-group-input");
       const groupName = input.value.trim();
       if (groupName === "") {
@@ -675,7 +682,8 @@ export const syncExport = (world) => {
   };
   document
     .getElementById("export-result-action")
-    .addEventListener("click", () => {
+    .addEventListener("click", (event) => {
+      event.preventDefault()
       // transform models
       const json = getViews();
       var dataStr =
@@ -692,7 +700,8 @@ export const syncExport = (world) => {
 
   document
     .getElementById("save-to-server")
-    .addEventListener("click", async () => {
+    .addEventListener("click", async (event) => {
+      event.preventDefault()
       const json = getViews();
       if (!json) {
         return;
