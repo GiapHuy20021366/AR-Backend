@@ -23,6 +23,7 @@ const initWebRouters = (app) => {
   router.get("/page", modifyController.modifyPage);
   router.get("/files", fileController.getAllFiles);
   router.post("/json", fileController.saveViews);
+  router.post("/api/update", fileController.checkUpdateViews);
   return app.use("/", router);
 };
 

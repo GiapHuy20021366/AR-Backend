@@ -1,4 +1,5 @@
 import fileService from "./fileService";
+import updateService from "./updateService";
 
 export default class ServiceMessage {
   constructor(status, result, message) {
@@ -10,4 +11,5 @@ export default class ServiceMessage {
 
 module.exports = {
   fileService,
+  updateService,
 };

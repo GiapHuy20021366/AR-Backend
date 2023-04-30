@@ -1,4 +1,4 @@
-import { fileService } from "../services/index";
+import { fileService, updateService } from "../services/index";
 import GFS from "../config/storage";
 import fs from "fs";
 import path from "path";
@@ -107,7 +107,27 @@ const saveViews = async (req, res) => {
   }
 };
 
-const getViews = async (req, res) => {};
+const checkUpdateViews = async (req, res) => {
+  let views = req.body;
+  if (typeof views === "string") {
+    try {
+      views = JSON.parse(views);
+    } catch (error) {
+      return res.status(400).send("Invalid views");
+    }
+  }
+  const ver = updateService.getNewVersion(views);
+  if (ver) {
+    return res.status(200).json({
+      update: true,
+      data: ver,
+    });
+  }
+  return res.status(200).json({
+    update: false,
+    data: ver,
+  });
+};
 
 module.exports = {
   fileUploadView,
@@ -118,4 +138,5 @@ module.exports = {
   fileDelete,
   getAllFiles,
   saveViews,
+  checkUpdateViews,
 };

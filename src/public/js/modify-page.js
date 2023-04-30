@@ -623,22 +623,42 @@ class World {
     const appModels = [];
     // Transform to app show
 
-    const rotationMatrix = new THREE.Matrix4();
-    rotationMatrix.makeRotationX(-this.anchor.rotation.x);
-    rotationMatrix.makeRotationY(-this.anchor.rotation.y);
-    rotationMatrix.makeRotationZ(-this.anchor.rotation.z);
-    rotationMatrix.makeTranslation(
-      -this.anchor.position.x,
-      -this.anchor.position.y,
-      -this.anchor.position.z
-    );
+    // const rotationMatrix = new THREE.Matrix4();
+    // rotationMatrix.makeRotationX(-this.anchor.rotation.x);
+    // rotationMatrix.makeRotationY(-this.anchor.rotation.y);
+    // rotationMatrix.makeRotationZ(-this.anchor.rotation.z);
+    // rotationMatrix.makeTranslation(
+    //   -this.anchor.position.x,
+    //   -this.anchor.position.y,
+    //   -this.anchor.position.z
+    // );
+
+    // Object.entries(this.models).forEach(([modelName, model]) => {
+    //   const cloneModel = model.clone();
+    //   cloneModel.position.applyMatrix4(rotationMatrix);
+    //   cloneModel.rotation.setFromRotationMatrix(
+    //     rotationMatrix.multiply(cloneModel.matrix)
+    //   );
+
+    //   const modelDescription = {
+    //     id: modelName,
+    //     name: model.nameRef,
+    //     group: model?.belongGroup?.name,
+    //     position: cloneModel.position.clone().toArray(),
+    //     rotation: cloneModel.rotation.clone().toArray(),
+    //     scale: cloneModel.scale.clone().toArray(),
+    //     visible: model.visible,
+    //   };
+    //   appModels.push(modelDescription);
+    // });
 
     Object.entries(this.models).forEach(([modelName, model]) => {
       const cloneModel = model.clone();
-      cloneModel.position.applyMatrix4(rotationMatrix);
-      cloneModel.rotation.setFromRotationMatrix(
-        rotationMatrix.multiply(cloneModel.matrix)
-      );
+      cloneModel.position.sub(this.anchor.position);
+      // cloneModel.position.applyMatrix4(rotationMatrix);
+      // cloneModel.rotation.setFromRotationMatrix(
+      //   rotationMatrix.multiply(cloneModel.matrix)
+      // );
 
       const modelDescription = {
         id: modelName,
@@ -651,30 +671,6 @@ class World {
       };
       appModels.push(modelDescription);
     });
-    // Object.entries(this.models).forEach(([modelName, model]) => {
-    //   const cloneModel = model.clone();
-    //   const newOrigin = this.anchor;
-
-    //   const matrix = new THREE.Matrix4();
-    //   matrix.multiplyMatrices(
-    //     newOrigin.matrixWorld.getInverse(newOrigin.matrixWorld),
-    //     cloneModel.matrixWorld
-    //   );
-    //   cloneModel.position.applyMatrix4(matrix);
-    //   cloneModel.scale.applyMatrix4(matrix);
-    //   cloneModel.quaternion.setFromRotationMatrix(matrix);
-
-    //   const modelDescription = {
-    //     id: modelName,
-    //     name: model.nameRef,
-    //     group: model?.belongGroup?.name,
-    //     position: cloneModel.position.clone(),
-    //     rotation: cloneModel.rotation.clone(),
-    //     scale: cloneModel.scale.clone(),
-    //     visible: model.visible,
-    //   };
-    //   appModels.push(modelDescription);
-    // });
     return appModels;
   }
 }
