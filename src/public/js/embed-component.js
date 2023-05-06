@@ -50,7 +50,8 @@ export const syncLights = (world) => {
       lightHeader.innerHTML = key;
       lightHeader.href = `#${key}-light-collapsible`;
 
-      const lightProperties = lightContainer.querySelector("._light-properties");
+      const lightProperties =
+        lightContainer.querySelector("._light-properties");
       lightProperties.id = `${key}-light-collapsible`;
 
       // Position sync
@@ -118,10 +119,11 @@ export const syncModels = (world) => {
 
       const modelHeader = modelContainer.querySelector("._model-header");
       modelHeader.innerHTML = key;
-      modelHeader.href = `#${key}-model-collapsible`
+      modelHeader.href = `#${key}-model-collapsible`;
 
-      const modelProperties = modelContainer.querySelector("._model-properties");
-      modelProperties.id = `${key}-model-collapsible`
+      const modelProperties =
+        modelContainer.querySelector("._model-properties");
+      modelProperties.id = `${key}-model-collapsible`;
 
       // sync groups
       const groups = world.groups;
@@ -180,24 +182,24 @@ export const syncModels = (world) => {
       const rotationX = modelContainer.querySelector(
         "._model-rotation-x-value"
       );
-      rotationX.value = model.rotation.x;
+      rotationX.value = (model.rotation.x * 180) / Math.PI;
       const rotationY = modelContainer.querySelector(
         "._model-rotation-y-value"
       );
-      rotationY.value = model.rotation.y;
+      rotationY.value = (model.rotation.y * 180) / Math.PI;
       const rotationZ = modelContainer.querySelector(
         "._model-rotation-z-value"
       );
-      rotationZ.value = model.rotation.z;
+      rotationZ.value = (model.rotation.z * 180) / Math.PI;
 
       rotationX.addEventListener("change", (event) => {
-        model.rotation.x = parseFloat(event.target.value);
+        model.rotation.x = (parseFloat(event.target.value) / 180) * Math.PI;
       });
       rotationY.addEventListener("change", (event) => {
-        model.rotation.y = parseFloat(event.target.value);
+        model.rotation.y = (parseFloat(event.target.value) / 180) * Math.PI;
       });
       rotationZ.addEventListener("change", (event) => {
-        model.rotation.z = parseFloat(event.target.value);
+        model.rotation.z = (parseFloat(event.target.value) / 180) * Math.PI;
       });
 
       // Scale sync
@@ -251,9 +253,9 @@ export const syncModels = (world) => {
       });
       model.addEventListener("rotate", (event) => {
         // Update rotation
-        rotationX.value = model.rotation.x;
-        rotationY.value = model.rotation.y;
-        rotationZ.value = model.rotation.z;
+        rotationX.value = (model.rotation.x * 180) / Math.PI;
+        rotationY.value = (model.rotation.y * 180) / Math.PI;
+        rotationZ.value = (model.rotation.z * 180) / Math.PI;
       });
       model.addEventListener("visible", (event) => {
         // Update visible
@@ -321,10 +323,11 @@ export const syncGroups = (world) => {
 
       const groupHeader = groupContainer.querySelector("._group-header");
       groupHeader.innerHTML = key;
-      groupHeader.href = `#${key}-group-collapsible`
+      groupHeader.href = `#${key}-group-collapsible`;
 
-      const groupProperties = groupContainer.querySelector("._group-properties");
-      groupProperties.id = `${key}-group-collapsible`
+      const groupProperties =
+        groupContainer.querySelector("._group-properties");
+      groupProperties.id = `${key}-group-collapsible`;
 
       // List element Sync
       const elements = groupContainer.querySelector("._group-model-values");
@@ -365,26 +368,26 @@ export const syncGroups = (world) => {
       const rotationX = groupContainer.querySelector(
         "._group-rotation-x-value"
       );
-      rotationX.value = group.rotation.x;
+      rotationX.value = (group.rotation.x * 180) / Math.PI;
       const rotationY = groupContainer.querySelector(
         "._group-rotation-y-value"
       );
-      rotationY.value = group.rotation.y;
+      rotationY.value = (group.rotation.y * 180) / Math.PI;
       const rotationZ = groupContainer.querySelector(
         "._group-rotation-z-value"
       );
-      rotationZ.value = group.rotation.z;
+      rotationZ.value = (group.rotation.z * 180) / Math.PI;
 
       rotationX.addEventListener("change", (event) => {
-        group.rotation.x = parseFloat(event.target.value);
+        group.rotation.x = (parseFloat(event.target.value) / 180) * Math.PI;
         // group.rotateOnX(parseFloat(event.target.value));
       });
       rotationY.addEventListener("change", (event) => {
-        group.rotation.y = parseFloat(event.target.value);
+        group.rotation.y = (parseFloat(event.target.value) / 180) * Math.PI;
         // group.rotate([0, 1, 0], parseFloat(event.target.value));
       });
       rotationZ.addEventListener("change", (event) => {
-        group.rotation.z = parseFloat(event.target.value);
+        group.rotation.z = (parseFloat(event.target.value) / 180) * Math.PI;
         // group.rotate([0, 0, 1], parseFloat(event.target.value));
       });
 
@@ -511,13 +514,13 @@ export const syncImport = async (world) => {
   document
     .getElementById("btn-refresh-import")
     .addEventListener("click", (event) => {
-      event.preventDefault()
+      event.preventDefault();
       reload();
     });
   document
     .getElementById("import-model-action")
     .addEventListener("click", async (event) => {
-      event.preventDefault()
+      event.preventDefault();
       const options = document.getElementById("import-model-options");
       const selected = options.options[options.selectedIndex];
       const prefix = selected.getAttribute("originalName");
@@ -537,7 +540,7 @@ export const syncImport = async (world) => {
   document
     .getElementById("import-group-action")
     .addEventListener("click", (event) => {
-      event.preventDefault()
+      event.preventDefault();
       const input = document.getElementById("import-group-input");
       const groupName = input.value.trim();
       if (groupName === "") {
@@ -588,20 +591,20 @@ export const syncAnchor = (world) => {
 
   // Rotation sync
   const rotationX = anchorContainer.querySelector(".anchor-rotation-x-value");
-  rotationX.value = anchor.rotation.x;
+  rotationX.value = (anchor.rotation.x * 180) / Math.PI;
   const rotationY = anchorContainer.querySelector(".anchor-rotation-y-value");
-  rotationY.value = anchor.rotation.y;
+  rotationY.value = (anchor.rotation.y * 180) / Math.PI;
   const rotationZ = anchorContainer.querySelector(".anchor-rotation-z-value");
-  rotationZ.value = anchor.rotation.z;
+  rotationZ.value = (anchor.rotation.z * 180) / Math.PI;
 
   rotationX.addEventListener("change", (event) => {
-    anchor.rotation.x = parseFloat(event.target.value);
+    anchor.rotation.x = (parseFloat(event.target.value) / 180) * Math.PI;
   });
   rotationY.addEventListener("change", (event) => {
-    anchor.rotation.y = parseFloat(event.target.value);
+    anchor.rotation.y = (parseFloat(event.target.value) / 180) * Math.PI;
   });
   rotationZ.addEventListener("change", (event) => {
-    anchor.rotation.z = parseFloat(event.target.value);
+    anchor.rotation.z = (parseFloat(event.target.value) / 180) * Math.PI;
   });
 
   // Scale sync
@@ -640,13 +643,17 @@ export const syncExport = (world) => {
       window.alert("Description can not empty!");
       return;
     }
+    const markerRotation = world.anchor.rotation.clone().toArray();
+    markerRotation[0] = (markerRotation[0] * 180) / Math.PI;
+    markerRotation[1] = (markerRotation[1] * 180) / Math.PI;
+    markerRotation[2] = (markerRotation[2] * 180) / Math.PI;
 
     const json = {
       version: world.version + 1,
       description: description,
       marker: {
         position: world.anchor.position.clone().toArray(),
-        rotation: world.anchor.rotation.clone().toArray(),
+        rotation: markerRotation,
         scale: world.anchor.scale.clone().toArray(),
         visible: world.anchor.visible,
       },
@@ -683,7 +690,7 @@ export const syncExport = (world) => {
   document
     .getElementById("export-result-action")
     .addEventListener("click", (event) => {
-      event.preventDefault()
+      event.preventDefault();
       // transform models
       const json = getViews();
       var dataStr =
@@ -701,7 +708,7 @@ export const syncExport = (world) => {
   document
     .getElementById("save-to-server")
     .addEventListener("click", async (event) => {
-      event.preventDefault()
+      event.preventDefault();
       const json = getViews();
       if (!json) {
         return;

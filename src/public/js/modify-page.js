@@ -318,6 +318,9 @@ class World {
       this.addGroup(groupName);
     });
 
+    marker.rotation[0] = (marker.rotation[0] / 180) * Math.PI;
+    marker.rotation[1] = (marker.rotation[1] / 180) * Math.PI;
+    marker.rotation[2] = (marker.rotation[2] / 180) * Math.PI;
     this.addAnchor(marker);
 
     Promise.all(
@@ -626,43 +629,13 @@ class World {
     const appModels = [];
     // Transform to app show
 
-    // const rotationMatrix = new THREE.Matrix4();
-    // rotationMatrix.makeRotationX(-this.anchor.rotation.x);
-    // rotationMatrix.makeRotationY(-this.anchor.rotation.y);
-    // rotationMatrix.makeRotationZ(-this.anchor.rotation.z);
-    // rotationMatrix.makeTranslation(
-    //   -this.anchor.position.x,
-    //   -this.anchor.position.y,
-    //   -this.anchor.position.z
-    // );
-
-    // Object.entries(this.models).forEach(([modelName, model]) => {
-    //   const cloneModel = model.clone();
-    //   cloneModel.position.applyMatrix4(rotationMatrix);
-    //   cloneModel.rotation.setFromRotationMatrix(
-    //     rotationMatrix.multiply(cloneModel.matrix)
-    //   );
-
-    //   const modelDescription = {
-    //     id: modelName,
-    //     name: model.nameRef,
-    //     group: model?.belongGroup?.name,
-    //     position: cloneModel.position.clone().toArray(),
-    //     rotation: cloneModel.rotation.clone().toArray(),
-    //     scale: cloneModel.scale.clone().toArray(),
-    //     visible: model.visible,
-    //   };
-    //   appModels.push(modelDescription);
-    // });
-
     Object.entries(this.models).forEach(([modelName, model]) => {
       const cloneModel = model.clone();
       cloneModel.position.sub(this.anchor.position);
-      // cloneModel.position.applyMatrix4(rotationMatrix);
-      // cloneModel.rotation.setFromRotationMatrix(
-      //   rotationMatrix.multiply(cloneModel.matrix)
-      // );
-
+      const rotation = cloneModel.rotation.clone().toArray();
+      rotation[0] = (rotation[0] * 180) / Math.PI;
+      rotation[1] = (rotation[1] * 180) / Math.PI;
+      rotation[2] = (rotation[2] * 180) / Math.PI;
       const modelDescription = {
         id: modelName,
         name: model.nameRef,
