@@ -38,9 +38,9 @@ const insertFileInfo = (file) => {
   idx = idx != -1 ? idx : filename.length;
   file.originalName = filename.slice(idx + 1);
   // Insert access view link
-  file.viewUrl = `${process.env.SERVER_URL}:${process.env.PORT}/view/model/${filename}`;
-  file.downloadUrl = `${process.env.SERVER_URL}:${process.env.PORT}/api/download/${filename}`;
-  file.deleteUrl = `${process.env.SERVER_URL}:${process.env.PORT}/api/model/${filename}`;
+  file.viewUrl = `${process.env.SERVER_URL}/view/model/${filename}`;
+  file.downloadUrl = `${process.env.SERVER_URL}/api/download/${filename}`;
+  file.deleteUrl = `${process.env.SERVER_URL}/api/model/${filename}`;
   file.uploadDate = new Date(file.uploadDate).toLocaleString();
 };
 

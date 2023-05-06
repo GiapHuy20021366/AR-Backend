@@ -15,9 +15,7 @@ const fileUpLoadAction = (req, res, next) => {
   }
   const { middlewareInf } = req;
   const { filename } = middlewareInf;
-  return res.redirect(
-    `${process.env.SERVER_URL}:${process.env.PORT}/view/model/${filename}`
-  );
+  return res.redirect(`${process.env.SERVER_URL}/view/model/${filename}`);
 };
 
 const fileView = async (req, res, next) => {
@@ -30,8 +28,8 @@ const fileView = async (req, res, next) => {
     }
     fileService.insertFileInfo(file);
     return res.render("model-view.ejs", {
-      modelUrl: `${process.env.SERVER_URL}:${
-        process.env.PORT
+      modelUrl: `${
+        process.env.SERVER_URL
       }/api/download/${file.filename.toLowerCase()}`,
       file,
     });
