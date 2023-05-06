@@ -641,7 +641,7 @@ class World {
         name: model.nameRef,
         group: model?.belongGroup?.name,
         position: cloneModel.position.clone().toArray(),
-        rotation: cloneModel.rotation.clone().toArray(),
+        rotation: rotation,
         scale: cloneModel.scale.clone().toArray(),
         visible: model.visible,
       };
