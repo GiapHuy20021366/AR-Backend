@@ -445,11 +445,14 @@ class World {
     const modelScene = model.scene;
     const animation = model.animations[0];
     const mixer = new THREE.AnimationMixer(modelScene);
-    const action = mixer.clipAction(animation);
+    if (animation) {
+      const action = mixer.clipAction(animation);
+      this.actions[key] = action;
+      action.play();
+    }
+
     this.mixers[key] = mixer;
-    this.actions[key] = action;
     this.models[key] = modelScene;
-    action.play();
     // Set properties
     position && modelScene.position.set(...position);
     rotation && modelScene.rotation.set(...rotation);

@@ -73,8 +73,10 @@ class World {
     // console.log(model);
     const animation = model.animations[0];
     const mixer = new THREE.AnimationMixer(modelScene);
-    const action = mixer.clipAction(animation);
-    action.play();
+    if (animation) {
+      const action = mixer.clipAction(animation);
+      action.play();
+    }
 
     scene.add(modelScene);
     renderer.render(scene, camera);
