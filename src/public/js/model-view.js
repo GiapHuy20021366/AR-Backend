@@ -1,6 +1,7 @@
-import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -46,9 +47,14 @@ controls.addEventListener("change", () => {
 });
 controls.update();
 
+const gltfLoader = new GLTFLoader();
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath("/libs/three/draco/");
+dracoLoader.setDecoderConfig({ type: "js" });
+gltfLoader.setDRACOLoader(dracoLoader);
+
 async function loadDataModel(url) {
-  const loader = new GLTFLoader();
-  const data = await loader.loadAsync(url);
+  const data = await gltfLoader.loadAsync(url);
   return data;
 }
 
